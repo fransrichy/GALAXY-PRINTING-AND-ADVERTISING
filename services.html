@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galaxy Printing - Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .background-animation {
+            animation: pulse-glow 5s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 10px rgba(128, 0, 128, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(128, 0, 128, 0.8), 0 0 40px rgba(128, 0, 128, 0.6);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(128, 0, 128, 0.4);
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Basic list style reset */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Responsive Hero Image */
+        #services-hero .absolute {
+            filter: brightness(0.7);
+        }
+
+        .no-blur {
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+    </style>
 </head>
 
 <body class="bg-white text-black antialiased">
@@ -19,13 +57,32 @@
             <a href="index.html" class="text-2xl font-bold text-purple-700 flex items-center">
                 <img src="Galaxy Logo Revamp-01.png" alt="Galaxy Printing Logo" class="h-10">
             </a>
-            <ul class="flex space-x-6 lg:space-x-10 text-lg">
+
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex space-x-6 lg:space-x-10 text-lg">
                 <li><a href="services.html" class="text-black hover:text-purple-700 transition-colors font-medium">Services</a></li>
                 <li><a href="team.html" class="text-black hover:text-purple-700 transition-colors font-medium">Team</a></li>
                 <li><a href="portfolio.html" class="text-black hover:text-purple-700 transition-colors font-medium">Portfolio</a></li>
                 <li><a href="contact.html" class="text-black hover:text-purple-700 transition-colors font-medium">Contact</a></li>
             </ul>
+
+            <!-- Hamburger Menu Icon for Mobile -->
+            <div id="hamburger-btn" class="md:hidden flex flex-col space-y-2 cursor-pointer">
+                <span class="block w-8 h-1 bg-black rounded"></span>
+                <span class="block w-8 h-1 bg-black rounded"></span>
+                <span class="block w-8 h-1 bg-black rounded"></span>
+            </div>
         </nav>
+
+        <!-- Mobile Navigation (hidden by default) -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden">
+            <ul class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-bold">
+                <li><a href="services.html" class="text-black hover:text-purple-700 transition-colors">Services</a></li>
+                <li><a href="team.html" class="text-black hover:text-purple-700 transition-colors">Team</a></li>
+                <li><a href="portfolio.html" class="text-black hover:text-purple-700 transition-colors">Portfolio</a></li>
+                <li><a href="contact.html" class="text-black hover:text-purple-700 transition-colors">Contact</a></li>
+            </ul>
+        </div>
     </header>
 
     <main>
@@ -96,7 +153,7 @@
                 </div>
 
                 <div class="mb-16">
-                    <h2 class="text-4xl font-bold text-center text-purple-700 mb-8">Canvas Packages </h2>
+                    <h2 class="text-4xl font-bold text-center text-purple-700 mb-8">Canvas Packages </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
                         <div class="bg-gray-200 p-6 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
                             <h3 class="text-xl font-semibold text-black mb-2">A0 Canvas</h3>
@@ -122,7 +179,7 @@
                 </div>
 
                 <div class="mb-16">
-                    <h2 class="text-4xl font-bold text-center text-purple-700 mb-8">Wedding Packages </h2>
+                    <h2 class="text-4xl font-bold text-center text-purple-700 mb-8">Wedding Packages </h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="bg-gray-200 p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform duration-300">
                             <h3 class="text-2xl font-semibold text-black mb-2">Mini Package</h3>
@@ -248,7 +305,15 @@
             </div>
         </div>
     </footer>
-    
-    <script src="script.js"></script>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
+
 </html>
